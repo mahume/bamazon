@@ -1,27 +1,34 @@
 const mysql = require('mysql')
 const inquirer = require('inquirer')
 
-const connection = mysql.createConnection({
+const options = {
     host: 'localhost',
-    port: 1337,
+    port: 3306,
     user: 'root',
     password: '',
     database: 'bamazon'
-})
-connection.connect(function(err) {
-    if (err) throw err
-    console.log(`Connected as: ${connection.threadId}`)
-    afterConnection()
 }
-function afterConnection() {
-    connection.query(`SELECT * FROM products`, function(err, res) {
-        if (err) throw err
+const connection = mysql.createConnection(options)
+connection.connect(err => {
+    if (err) {
+        console.error('An error occurred while connecting to the DB')
+        throw err
+    } 
+    console.error(`Connected as: ${connection.threadId}`)
+    selectAll()
+})
+function selectAll() {
+    connection.query(`SELECT * FROM products`, (err, res) => {
+        if (err) {
+            console.error('An error occurred while executing the query')
+            throw err
+        }
         console.log(res)
         connection.end()
     })
 }
 
-
+/*
 inquirer
 .prompt([
     {
@@ -42,3 +49,4 @@ inquirer
 .then(answers => {
 
 })
+*/
