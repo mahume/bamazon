@@ -24,30 +24,29 @@ function selectAll() {
             console.error('An error occurred while executing the query')
             throw err
         }
-        console.log(res)
+        console.table(res)
         connection.end()
     })
 }
 
-/*
 inquirer
 .prompt([
     {
         type: 'input',
-        name: 'item',
-        message: 'Enter the ID# of the item you would you like to buy.',
-        choices: [
-
-        ]
+        name: 'item_id',
+        message: `What is the ID# of the product that you'd like to buy?`
     },
     {
         type: 'input',
-        name: 'quantity',
-        message: 'How many would you like to buy?',
-        default: 1
+        name: 'item_qty',
+        message: `How many would you like to buy?`
     }
 ])
 .then(answers => {
-
+    productCheck(answers.item_id, answers.item_qty)
 })
-*/
+
+function productCheck(id, qty) {
+    console.log(id)
+    console.log(qty)
+}

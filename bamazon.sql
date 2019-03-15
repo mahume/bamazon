@@ -23,3 +23,5 @@ VALUES  ('Pillow', 'Home', 13.00, 15),
         ('Milk', 'Grocery', 1.99, 40),
         ('Leather Couch', 'Home Decor', 1250, 2),
         ('Eye Liner', 'Personal Care', 5.97, 20);
+
+SELECT * FROM products;
