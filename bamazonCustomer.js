@@ -1,36 +1,28 @@
-require('dotenv').config()
-const mysql = require('mysql')
+const connect = require('./connect')
+
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 const ora = require('ora')
 
-const options = {
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: process.env.DB_PASS,
-    database: 'bamazon'
-}
-const connection = mysql.createConnection(options)
-connection.connect(err => {
+connect.connection.connect(err => {
     if (err) {
-        console.error('An error occurred while connecting to the DB')
+        console.error('An error occurred while connecting to the database.')
         throw err
     } 
-    console.error(`Connected as: ${connection.threadId}`)
-    selectAll()
+    console.error(`Connected as: ${connect.connection.threadId}`)
+    showAllProducts()
 })
-function selectAll() {
-    connection.query(`SELECT * FROM products`, (err, res) => {
+function showAllProducts() {
+    connect.connection.query(`SELECT * FROM products`, (err, res) => {
         if (err) {
             console.error('An error occurred while executing the query')
             throw err
         }
         console.table(res)
-        questions()
+        promptQuestions()
     })
 }
-function questions() {
+function promptQuestions() {
     inquirer
     .prompt([
         {
@@ -45,23 +37,36 @@ function questions() {
         }
     ])
     .then(answers => {
-        productCheck(answers.item_id, answers.item_qty)
+        checkQty(answers.item_id, answers.item_qty)
     })
 }
-
-
-function productCheck(id, qty) {
-    const query = connection.query(`SELECT * FROM products WHERE item_id=?`, [id], (err, res) => {
+function checkQty(id, qty) {
+    connect.connection.query(`SELECT * FROM products WHERE item_id=?`, [id], (err, res) => {
         const item_id = parseInt(id, 10)
         const quantity = parseInt(qty, 10)
 
         if (res[0].stock_quantity >= quantity) {
             console.log('Sufficient stock')
+            purchaseProduct(item_id, quantity)
         } else {
             console.log('Insufficient Qty')
+            promptQuestions()
         }
     })
 }
-
-
+function purchaseProduct(id, qty) {
+    connect.connection.query(
+        `UPDATE products SET ? WHERE ?`,
+        [
+            {
+                quantity: qty
+            },
+            {
+                item_id: id
+            }
+        ],
+        (err, res) => {
+            console.log('Updated')
+        })
+}
 // connection.end()
