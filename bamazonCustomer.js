@@ -10,9 +10,9 @@ connect.connection.connect(err => {
         throw err
     } 
     console.error(`Connected as: ${connect.connection.threadId}`)
-    showAllProducts()
+    viewAllProducts()
 })
-function showAllProducts() {
+function viewAllProducts() {
     connect.connection.query(`SELECT * FROM products`, (err, res) => {
         if (err) {
             console.error('An error occurred while executing the query')
