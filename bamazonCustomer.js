@@ -50,12 +50,12 @@ function checkQty(id, qty) {
         if (Number.isNaN(item_id) || Number.isNaN(quantity)) {
             console.log('Please enter a valid numerical number.')
             promptQuestions()
-        } else if (res[0].stock_quantity >= quantity) {
-            console.log('Sufficient stock')
-            purchaseProduct(item_id, quantity)
-        } else {
-            console.log('Insufficient Qty')
+        } else if (res[0].stock_quantity <= quantity) {
+            console.log(`Uh-oh... Looks like we don't have enough stock to complete your order.`)
             promptQuestions()
+        } else {
+            console.log(`You're in luck! We've got sufficient stock.`)
+            purchaseProduct(item_id, quantity)
         }
     })
 }
