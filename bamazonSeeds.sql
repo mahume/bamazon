@@ -8,7 +8,7 @@ CREATE TABLE products
     product_name VARCHAR(100) NOT NULL,
     department_name VARCHAR(100) NOT NULL,
     product_sales FLOAT(8,2) NOT NULL,
-    price FLOAT(7,2) NOT NULL,
+    price FLOAT(8,2) NOT NULL,
     stock_quantity INT,
     PRIMARY KEY (item_id)
 );
@@ -22,7 +22,7 @@ VALUES  ('Pillow', 'Home', 13.00, 15),
         ('Television', 'Electronics', 598.00, 10),
         ('Paper Plates', 'Kitchen', 13.48, 15),
         ('Milk', 'Grocery', 1.99, 40),
-        ('Leather Couch', 'Home Decor', 1250, 2),
+        ('Leather Couch', 'Home Decor', 1250.00, 2),
         ('Eye Liner', 'Personal Care', 5.97, 20);
 
 SELECT * FROM products;

@@ -42,10 +42,15 @@ function promptQuestions() {
 }
 function checkQty(id, qty) {
     connect.connection.query(`SELECT * FROM products WHERE item_id=?`, [id], (err, res) => {
+        errorHandler(err)
+
         const item_id = parseInt(id, 10)
         const quantity = parseInt(qty, 10)
 
-        if (res[0].stock_quantity >= quantity) {
+        if (Number.isNaN(item_id) || Number.isNaN(quantity)) {
+            console.log('Please enter a valid numerical number.')
+            promptQuestions()
+        } else if (res[0].stock_quantity >= quantity) {
             console.log('Sufficient stock')
             purchaseProduct(item_id, quantity)
         } else {
@@ -69,4 +74,12 @@ function purchaseProduct(id, qty) {
             console.log('Updated')
         })
 }
+function errorHandler(err) {
+    if (err) {
+        console.log('An error occurred while executing the query')
+        throw err
+    }
+}
+
+
 // connection.end()
