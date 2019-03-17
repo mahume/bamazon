@@ -46,6 +46,7 @@ function checkQty(id, qty) {
 
         const item_id = parseInt(id, 10)
         const quantity = parseInt(qty, 10)
+        const newQty = res[0].stock_quantity - quantity
 
         if (Number.isNaN(item_id) || Number.isNaN(quantity)) {
             console.log('Please enter a valid numerical number.')
@@ -55,7 +56,7 @@ function checkQty(id, qty) {
             promptQuestions()
         } else {
             console.log(`You're in luck! We've got sufficient stock.`)
-            purchaseProduct(item_id, quantity)
+            purchaseProduct(item_id, newQty)
         }
     })
 }
@@ -64,7 +65,7 @@ function purchaseProduct(id, qty) {
         `UPDATE products SET ? WHERE ?`,
         [
             {
-                quantity: qty
+                stock_quantity: qty
             },
             {
                 item_id: id
@@ -73,6 +74,11 @@ function purchaseProduct(id, qty) {
         (err, res) => {
             console.log('Updated')
         })
+    connect.connection.query(
+        `SELECT * FROM products WHERE id=?`, [id], (err, res) => {
+            console.log(res)
+        }
+    )
 }
 function errorHandler(err) {
     if (err) {
