@@ -14,10 +14,7 @@ connect.connection.connect(err => {
 })
 function viewAllProducts() {
     connect.connection.query(`SELECT * FROM products`, (err, res) => {
-        if (err) {
-            console.error('An error occurred while executing the query')
-            throw err
-        }
+        errorHandler(err)
         console.table(res)
         promptQuestions()
     })
@@ -40,14 +37,31 @@ function promptQuestions() {
         checkQty(answers.item_id, answers.item_qty)
     })
 }
+function continueShopping() {
+    inquirer
+    .prompt([
+        {
+            type: 'confirm',
+            name: 'continueShop',
+        }
+    ])
+    .then(answers => {
+        console.log(answers)
+        if (answers.continueShop === true) {
+            promptQuestions()
+        } else {
+            console.log(`Thank's for shopping at Bamazon. Come back soon.`)
+            connect.connection.end()
+        }
+    })
+}
 function checkQty(id, qty) {
     connect.connection.query(`SELECT * FROM products WHERE item_id=?`, [id], (err, res) => {
         errorHandler(err)
-        
         if (Number.isNaN(parseInt(id)) || Number.isNaN(parseInt(qty))) {
             console.log('Please enter a valid numerical number.')
             promptQuestions()
-        } else if (res[0].stock_quantity <= parseInt(qty)) {
+        } else if (res[0].stock_quantity < parseInt(qty)) {
             console.log(`Uh-oh... Looks like we don't have enough stock to complete your order.`)
             promptQuestions()
         } else {
@@ -69,14 +83,17 @@ function purchaseProduct(id, qty, qtyRemaining) {
             }
         ],
         (err, res) => {
-            console.log('Updated')
+            errorHandler(err)
         })
     connect.connection.query(
         `SELECT * FROM products WHERE item_id=?`, [id], (err, res) => {
-            console.log(res[0].price)
-            console.log(qty)
+            errorHandler(err)
             const total = res[0].price * qty
-            console.log(`Your grand total is $${total}.`)
+            console.log(`
+            Receipt:
+            ${qty}EA at $${res[0].price}
+            Your grand total is $${total}.`)
+            continueShopping()
         }
     )
 }
@@ -86,6 +103,3 @@ function errorHandler(err) {
         throw err
     }
 }
-
-
-// connection.end()
