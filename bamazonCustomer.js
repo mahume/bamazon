@@ -13,10 +13,13 @@ connect.connection.connect(err => {
     viewAllProducts()
 })
 function viewAllProducts() {
-    connect.connection.query(`SELECT * FROM products`, (err, res) => {
-        errorHandler(err)
-        console.table(res)
-        promptQuestions()
+    connect.connection.query(`
+        SELECT * 
+        FROM products`, 
+        (err, res) => {
+            errorHandler(err)
+            console.table(res)
+            promptQuestions()
     })
 }
 function promptQuestions() {
@@ -43,10 +46,10 @@ function continueShopping() {
         {
             type: 'confirm',
             name: 'continueShop',
+            message: 'Would you like to continue shopping?'
         }
     ])
     .then(answers => {
-        console.log(answers)
         if (answers.continueShop === true) {
             promptQuestions()
         } else {
@@ -56,24 +59,32 @@ function continueShopping() {
     })
 }
 function checkQty(id, qty) {
-    connect.connection.query(`SELECT * FROM products WHERE item_id=?`, [id], (err, res) => {
-        errorHandler(err)
-        if (Number.isNaN(parseInt(id)) || Number.isNaN(parseInt(qty))) {
-            console.log('Please enter a valid numerical number.')
-            promptQuestions()
-        } else if (res[0].stock_quantity < parseInt(qty)) {
-            console.log(`Uh-oh... Looks like we don't have enough stock to complete your order.`)
-            promptQuestions()
-        } else {
-            const qtyRemaining = res[0].stock_quantity - qty
-            console.log(`You're in luck! We've got sufficient stock.`)
-            purchaseProduct(id, qty, qtyRemaining)
+    connect.connection.query(`
+        SELECT * 
+        FROM products 
+        WHERE item_id=?`,
+        [id], 
+        (err, res) => {
+            errorHandler(err)
+            if (Number.isNaN(parseInt(id)) || Number.isNaN(parseInt(qty))) {
+                console.log('Please enter a valid numerical number.')
+                promptQuestions()
+            } else if (res[0].stock_quantity < parseInt(qty)) {
+                console.log(`Uh-oh... Looks like we don't have enough stock to complete your order.`)
+                promptQuestions()
+            } else {
+                const qtyRemaining = res[0].stock_quantity - qty
+                console.log(`You're in luck! We've got sufficient stock.`)
+                purchaseProduct(id, qty, qtyRemaining)
+            }
         }
-    })
+    )
 }
 function purchaseProduct(id, qty, qtyRemaining) {
     connect.connection.query(
-        `UPDATE products SET ? WHERE ?`,
+        `UPDATE products 
+        SET ? 
+        WHERE ?`,
         [
             {
                 stock_quantity: qty
@@ -86,13 +97,18 @@ function purchaseProduct(id, qty, qtyRemaining) {
             errorHandler(err)
         })
     connect.connection.query(
-        `SELECT * FROM products WHERE item_id=?`, [id], (err, res) => {
+        `SELECT * 
+        FROM products 
+        WHERE item_id=?`, 
+        [id], 
+        (err, res) => {
             errorHandler(err)
             const total = res[0].price * qty
             console.log(`
             Receipt:
             ${qty}EA at $${res[0].price}
-            Your grand total is $${total}.`)
+            Your grand total is $${total}.
+            `)
             continueShopping()
         }
     )
