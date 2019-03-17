@@ -43,24 +43,21 @@ function promptQuestions() {
 function checkQty(id, qty) {
     connect.connection.query(`SELECT * FROM products WHERE item_id=?`, [id], (err, res) => {
         errorHandler(err)
-
-        const item_id = parseInt(id, 10)
-        const quantity = parseInt(qty, 10)
-        const newQty = res[0].stock_quantity - quantity
-
-        if (Number.isNaN(item_id) || Number.isNaN(quantity)) {
+        
+        if (Number.isNaN(parseInt(id)) || Number.isNaN(parseInt(qty))) {
             console.log('Please enter a valid numerical number.')
             promptQuestions()
-        } else if (res[0].stock_quantity <= quantity) {
+        } else if (res[0].stock_quantity <= parseInt(qty)) {
             console.log(`Uh-oh... Looks like we don't have enough stock to complete your order.`)
             promptQuestions()
         } else {
+            const qtyRemaining = res[0].stock_quantity - qty
             console.log(`You're in luck! We've got sufficient stock.`)
-            purchaseProduct(item_id, newQty)
+            purchaseProduct(id, qty, qtyRemaining)
         }
     })
 }
-function purchaseProduct(id, qty) {
+function purchaseProduct(id, qty, qtyRemaining) {
     connect.connection.query(
         `UPDATE products SET ? WHERE ?`,
         [
@@ -75,8 +72,11 @@ function purchaseProduct(id, qty) {
             console.log('Updated')
         })
     connect.connection.query(
-        `SELECT * FROM products WHERE id=?`, [id], (err, res) => {
-            console.log(res)
+        `SELECT * FROM products WHERE item_id=?`, [id], (err, res) => {
+            console.log(res[0].price)
+            console.log(qty)
+            const total = res[0].price * qty
+            console.log(`Your grand total is $${total}.`)
         }
     )
 }
