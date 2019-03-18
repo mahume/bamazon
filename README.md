@@ -20,15 +20,13 @@ node bamazonCustomer.js
 ![](gifs/id-not-in-table.gif)
 
 
-3. If not errors are found and there is sufficient stock, you will receive a receipt. 
+4. If not errors are found and there is sufficient stock, you will receive a receipt. 
 
-*If ID# is not a found in the table the app will notify you.*
 ![](gifs/success.gif)
 
 
-4. You are then able to exit the app
+5. You are then able to exit the app
 
-*If ID# is not a found in the table the app will notify you.*
 ![](gifs/stop-shop.gif)
 
 
