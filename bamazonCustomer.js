@@ -1,3 +1,5 @@
+"use strict"
+
 const connect = require('./connect')
 
 const inquirer = require('inquirer')
@@ -112,12 +114,14 @@ function purchaseProduct(id, qty, qtyRemaining) {
         [id], 
         (err, res) => {
             errorHandler(err)
-            const total = res[0].price * qty
-            const totalStyled = formatNumber(total)
+            let price = res[0].price
+            let total = price * qty
+            let priceStyled = formatNumber(price)
+            let totalStyled = formatNumber(total)
             console.log(`
             Receipt:
             Quantity: ${qty}EA 
-            Unit Price: $${res[0].price}
+            Unit Price: $${priceStyled}
             Grand total: $${totalStyled}.
             `)
             continueShopping()

@@ -1,3 +1,5 @@
+"use strict"
+
 const connect = require('./connect')
 
 const inquirer = require('inquirer')
