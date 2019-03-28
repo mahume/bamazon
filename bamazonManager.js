@@ -69,7 +69,13 @@ function returnToMenu() {
 }
 function viewAllProducts() {
     connect.connection.query(`
-        SELECT * 
+        SELECT
+        item_id AS ID,
+        product_name AS Product,
+        department_name AS Department,
+        CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
+        CONCAT('$', FORMAT(price, 2)) AS Price,
+        stock_quantity AS 'Quantity in stock'
         FROM products`, 
         (err, res) => {
             errorHandler(err)
@@ -80,9 +86,15 @@ function viewAllProducts() {
 function viewLowInventory() {
     const lowQty = 5
     connect.connection.query(`
-        SELECT * 
+        SELECT
+        item_id AS ID,
+        product_name AS Product,
+        department_name AS Department,
+        CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
+        CONCAT('$', FORMAT(price, 2)) AS Price,
+        stock_quantity AS 'Quantity in stock' 
         FROM products 
-        WHERE stock_quantity<=?`, 
+        WHERE stock_quantity<?`, 
         [lowQty], 
         (err, res) => {
             errorHandler(err)
