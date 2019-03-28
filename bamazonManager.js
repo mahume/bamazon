@@ -104,15 +104,21 @@ function viewLowInventory() {
 }
 function addInventoryDisplay() {
     connect.connection.query(`
-    SELECT * 
-    FROM products`, 
+        SELECT
+        item_id AS ID,
+        product_name AS Product,
+        department_name AS Department,
+        CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
+        CONCAT('$', FORMAT(price, 2)) AS Price,
+        stock_quantity AS 'Quantity in stock' 
+        FROM products`, 
     (err, res) => {
         errorHandler(err)
         console.table(res)
         addInventoryPrompt()
     })    
 }
-function addInventoryPrompt() {
+function addInventoryPrompt(currentQty) {
     inquirer
     .prompt([
         {
@@ -127,8 +133,22 @@ function addInventoryPrompt() {
         }
     ])
     .then(answers => {
-        addInventory(parseInt(answers.item_id), parseInt(answers.stock_quantity))
+        let id = parseInt(answers.item_id)
+        let addQty = parseInt(answers.stock_quantity)
+        retrieveCurrInventory(id, addQty)
     })
+}
+function retrieveCurrInventory(id, qty) {
+    connect.connection.query(`
+        SELECT
+        stock_quantity
+        FROM products
+        WHERE item_id=?`,
+        [id],
+        (err, res) => {
+            let newQty = res[0].stock_quantity + qty
+            addInventory(id, newQty)
+        })
 }
 function addInventory(id, qty) {    
     if (Number.isNaN(parseInt(id)) || Number.isNaN(parseInt(qty))) {
@@ -144,7 +164,7 @@ function addInventory(id, qty) {
         WHERE ?`,
         [
             {
-                stock_quantity: updatedQty
+                stock_quantity: qty
             },
             {
                 item_id: id
