@@ -175,7 +175,62 @@ function addInventory(id, qty) {
         })
     }    
 }
-function addNewProduct() {
+function addNewProductPrompt() {
+    inquirer.
+    prompt([
+        {
+            type: 'input',
+            name: 'product_name',
+            message: `Please enter a product name.`
+        },
+        {
+            type: 'input',
+            name: 'department_name',
+            message: `Please enter a department name.`
+        },
+        {
+            type: 'input',
+            name: 'unit_price',
+            message: `Please enter the product's price per unit.`
+        },
+        {
+            type: 'input',
+            name: 'stock_quantity',
+            message: `Please enter the stock quantity to create.`
+        }
+    ])
+    .then(answers => {
+        let productName = answers.product_name
+        let departmentName = answers.department_name
+        let unitPrice = answers.unit_price
+        let stockQty = answers.stock_quantity
+        addNewProduct(productName, departmentName, unitPrice, stockQty)
+    })
+}
+function addNewProduct(product, department, price, qty) {
+    connect.connection.query(`
+        INSERT INTO products 
+        (?, ?, product_sales, ?, ?)`,
+        [
+            {
+                product_name: product
+            },
+            {
+                department_name: department
+            },
+            {
+                product_sales: 0.00
+            },
+            {
+                price: price
+            },
+            {
+                stock_quantity: qty
+            }
+        ],
+        (err, res) => {
+            console.table(res)
+        })
 }
 function errorHandler(err) {
     if (err) {
