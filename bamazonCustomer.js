@@ -14,7 +14,13 @@ connect.connection.connect(err => {
 })
 function viewAllProducts() {
     connect.connection.query(`
-        SELECT * 
+        SELECT
+        item_id AS ID,
+        product_name AS Product,
+        department_name AS Department,
+        product_sales AS Sales,
+        CONCAT('$', FORMAT(price, 2)) AS Price,
+        stock_quantity AS 'Quantity in stock'
         FROM products`, 
         (err, res) => {
             errorHandler(err)
@@ -51,7 +57,7 @@ function continueShopping() {
     ])
     .then(answers => {
         if (answers.continueShop === true) {
-            promptQuestions()
+            viewAllProducts()
         } else {
             console.log(`Thank's for shopping at Bamazon. Come back soon.`)
             connect.connection.end()
@@ -90,7 +96,7 @@ function purchaseProduct(id, qty, qtyRemaining) {
         WHERE ?`,
         [
             {
-                stock_quantity: qty
+                stock_quantity: qtyRemaining
             },
             {
                 item_id: id
@@ -107,14 +113,20 @@ function purchaseProduct(id, qty, qtyRemaining) {
         (err, res) => {
             errorHandler(err)
             const total = res[0].price * qty
+            const totalStyled = formatNumber(total)
             console.log(`
             Receipt:
-            ${qty}EA at $${res[0].price}
-            Your grand total is $${total}.
+            Quantity: ${qty}EA 
+            Unit Price: $${res[0].price}
+            Grand total: $${totalStyled}.
             `)
             continueShopping()
         }
     )
+}
+function formatNumber(number) {
+    const numTruncated = number.toFixed(2)
+    return numTruncated.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 function errorHandler(err) {
     if (err) {
