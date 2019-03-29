@@ -42,7 +42,7 @@ function promptQuestions() {
                 addInventoryDisplay()
                 break;
             case 'Add new product':
-                addNewProduct()
+                addNewProductPrompt()
                 break;
             default:
                 break;
@@ -209,8 +209,9 @@ function addNewProductPrompt() {
 }
 function addNewProduct(product, department, price, qty) {
     connect.connection.query(`
-        INSERT INTO products 
-        (?, ?, product_sales, ?, ?)`,
+        INSERT INTO products
+        (product_name, department_name, product_sales, price, stock_quantity)
+        VALUES (?, ?, ?, ?, ?)`,
         [
             {
                 product_name: product
@@ -229,7 +230,7 @@ function addNewProduct(product, department, price, qty) {
             }
         ],
         (err, res) => {
-            console.table(res)
+            viewAllProducts()
         })
 }
 function errorHandler(err) {
