@@ -20,7 +20,7 @@ function viewAllProducts() {
         item_id AS ID,
         product_name AS Product,
         department_name AS Department,
-        product_sales AS Sales,
+        CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
         CONCAT('$', FORMAT(price, 2)) AS Price,
         stock_quantity AS 'Quantity in stock'
         FROM products`, 
@@ -125,7 +125,7 @@ function purchaseProduct(id, qty, qtyRemaining) {
             Unit Price: $${priceStyled}
             Grand total: $${totalStyled}.
             `)
-            addToProductSales(currentTotalSales, totalStyled, id)
+            increaseProductSales(currentTotalSales, total, id)
         }
     )
 }
@@ -133,15 +133,16 @@ function formatNumber(number) {
     const numTruncated = number.toFixed(2)
     return numTruncated.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-function addToProductSales(currentTotalSales, thisTotalSale, id) {
+function increaseProductSales(currentTotalSales, thisTotalSale, id) {
     let newTotalSales = currentTotalSales + thisTotalSale
+    let newTotalStyled = formatNumber(newTotalSales)
     connection.query(
         `UPDATE products
         SET ?
         WHERE ?`,
         [
             {
-                product_sales: newTotalSales
+                product_sales: newTotalStyled
             },
             {
                 item_id: id
