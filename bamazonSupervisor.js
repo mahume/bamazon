@@ -1,6 +1,6 @@
 "use strict"
 
-const connect = require('./connect')
+const connection = require('./connection')
 
 const inquirer = require('inquirer')
 const chalk = require('chalk')
@@ -22,7 +22,7 @@ function promptQuestions() {
     .then(answers => {
         switch (answers.options) {
             case 'View products sales by department':
-                salesByDepartment()
+                viewSalesByDepartment()
                 break;
             case 'Create new department':
                 createDepartment()
@@ -32,7 +32,7 @@ function promptQuestions() {
         }
     })
 }
-function salesByDepartment() {
+function viewSalesByDepartment() {
 
 }
 function createDepartment() {
