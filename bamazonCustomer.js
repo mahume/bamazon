@@ -116,6 +116,7 @@ function purchaseProduct(id, qty, qtyRemaining) {
             errorHandler(err)
             let price = res[0].price
             let total = price * qty
+            let currentTotalSales = res[0].product_sales
             let priceStyled = formatNumber(price)
             let totalStyled = formatNumber(total)
             console.log(`
@@ -124,13 +125,30 @@ function purchaseProduct(id, qty, qtyRemaining) {
             Unit Price: $${priceStyled}
             Grand total: $${totalStyled}.
             `)
-            continueShopping()
+            addToProductSales(currentTotalSales, totalStyled, id)
         }
     )
 }
 function formatNumber(number) {
     const numTruncated = number.toFixed(2)
     return numTruncated.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+function addToProductSales(currentTotalSales, thisTotalSale, id) {
+    let newTotalSales = currentTotalSales + thisTotalSale
+    connection.query(
+        `UPDATE products
+        SET ?
+        WHERE ?`,
+        [
+            {
+                product_sales: newTotalSales
+            },
+            {
+                item_id: id
+            }
+        ]
+    )
+    continueShopping()
 }
 function errorHandler(err) {
     if (err) {
