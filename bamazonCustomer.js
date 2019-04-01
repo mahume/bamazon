@@ -1,21 +1,21 @@
 "use strict"
 
-const connect = require('./connect')
+const connection = require('./connection')
 
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 const ora = require('ora')
 
-connect.connection.connect(err => {
+connection.connect(err => {
     if (err) {
         console.error('An error occurred while connecting to the database.')
         throw err
     } 
-    console.error(`Connected as: ${connect.connection.threadId}`)
+    console.error(`Connected as: ${connection.threadId}`)
     viewAllProducts()
 })
 function viewAllProducts() {
-    connect.connection.query(`
+    connection.query(`
         SELECT
         item_id AS ID,
         product_name AS Product,
@@ -62,12 +62,12 @@ function continueShopping() {
             viewAllProducts()
         } else {
             console.log(`Thank's for shopping at Bamazon. Come back soon.`)
-            connect.connection.end()
+            connection.end()
         }
     })
 }
 function checkQty(id, qty) {
-    connect.connection.query(`
+    connection.query(`
         SELECT * 
         FROM products 
         WHERE item_id=?`,
@@ -92,7 +92,7 @@ function checkQty(id, qty) {
     )
 }
 function purchaseProduct(id, qty, qtyRemaining) {
-    connect.connection.query(
+    connection.query(
         `UPDATE products 
         SET ? 
         WHERE ?`,
@@ -107,7 +107,7 @@ function purchaseProduct(id, qty, qtyRemaining) {
         (err, res) => {
             errorHandler(err)
         })
-    connect.connection.query(
+    connection.query(
         `SELECT * 
         FROM products 
         WHERE item_id=?`, 

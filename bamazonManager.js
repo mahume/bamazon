@@ -1,17 +1,17 @@
 "use strict"
 
-const connect = require('./connect')
+const connection = require('./connection')
 
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 const ora = require('ora')
 
-connect.connection.connect(err => {
+connection.connect(err => {
     if (err) {
         console.log(`An error occured while connecting to the database.`)
         throw err
     }
-    console.error(`Connected as: ${connect.connection.threadId}`)
+    console.error(`Connected as: ${connection.threadId}`)
     promptQuestions()
 })
 
@@ -63,12 +63,12 @@ function returnToMenu() {
             promptQuestions()
         } else {
             console.log(`Logging out`)
-            connect.connection.end()
+            connection.end()
         }
     })
 }
 function viewAllProducts() {
-    connect.connection.query(`
+    connection.query(`
         SELECT
         item_id AS ID,
         product_name AS Product,
@@ -85,7 +85,7 @@ function viewAllProducts() {
 }
 function viewLowInventory() {
     const lowQty = 5
-    connect.connection.query(`
+    connection.query(`
         SELECT
         item_id AS ID,
         product_name AS Product,
@@ -103,7 +103,7 @@ function viewLowInventory() {
     })
 }
 function addInventoryDisplay() {
-    connect.connection.query(`
+    connection.query(`
         SELECT
         item_id AS ID,
         product_name AS Product,
@@ -139,7 +139,7 @@ function addInventoryPrompt(currentQty) {
     })
 }
 function retrieveCurrInventory(id, qty) {
-    connect.connection.query(`
+    connection.query(`
         SELECT
         stock_quantity
         FROM products
@@ -158,7 +158,7 @@ function addInventory(id, qty) {
         console.log(`Please enter a correct ID#.`)
         addInventoryPrompt()
     } else {
-        connect.connection.query(`
+        connection.query(`
         UPDATE products
         SET ?
         WHERE ?`,
@@ -208,27 +208,15 @@ function addNewProductPrompt() {
     })
 }
 function addNewProduct(product, department, price, qty) {
-    connect.connection.query(`
-        INSERT INTO products
-        (product_name, department_name, product_sales, price, stock_quantity)
-        VALUES (?, ?, ?, ?, ?)`,
-        [
-            {
-                product_name: product
-            },
-            {
-                department_name: department
-            },
-            {
-                product_sales: 0.00
-            },
-            {
-                price: price
-            },
-            {
-                stock_quantity: qty
-            }
-        ],
+    connection.query(`
+        INSERT INTO products SET ?`,
+        {
+            product_name: product,
+            department_name: department,
+            product_sales: 0.00,
+            price: price,
+            stock_quantity: qty
+        },
         (err, res) => {
             viewAllProducts()
         })
