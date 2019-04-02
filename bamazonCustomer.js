@@ -17,12 +17,12 @@ connection.connect(err => {
 function viewAllProducts() {
     connection.query(`
         SELECT
-        item_id AS ID,
-        product_name AS Product,
-        department_name AS Department,
-        CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
-        CONCAT('$', FORMAT(price, 2)) AS Price,
-        stock_quantity AS 'Quantity in stock'
+            item_id AS ID,
+            product_name AS Product,
+            department_name AS Department,
+            CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
+            CONCAT('$', FORMAT(price, 2)) AS Price,
+            stock_quantity AS 'Quantity in stock'
         FROM products`, 
         (err, res) => {
             errorHandler(err)
@@ -92,8 +92,8 @@ function checkQty(id, qty) {
     )
 }
 function purchaseProduct(id, qty, qtyRemaining) {
-    connection.query(
-        `UPDATE products 
+    connection.query(`
+        UPDATE products 
         SET ? 
         WHERE ?`,
         [
@@ -107,8 +107,8 @@ function purchaseProduct(id, qty, qtyRemaining) {
         (err, res) => {
             errorHandler(err)
         })
-    connection.query(
-        `SELECT * 
+    connection.query(`
+        SELECT * 
         FROM products 
         WHERE item_id=?`, 
         [id], 
@@ -136,8 +136,8 @@ function formatNumber(number) {
 function increaseProductSales(currentTotalSales, thisTotalSale, id) {
     let newTotalSales = currentTotalSales + thisTotalSale
     let newTotalStyled = formatNumber(newTotalSales)
-    connection.query(
-        `UPDATE products
+    connection.query(`
+        UPDATE products
         SET ?
         WHERE ?`,
         [

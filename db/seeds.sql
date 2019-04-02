@@ -7,7 +7,13 @@ VALUES  ('Pillow', 'Home', 00.00, 13.00, 15),
         ('Television', 'Electronics', 00.00, 598.00, 10),
         ('Paper Plates', 'Kitchen', 00.00, 13.48, 15),
         ('Milk', 'Grocery', 00.00, 1.99, 40),
-        ('Leather Couch', 'Home Decor', 00.00, 1250.00, 2),
+        ('Leather Couch', 'Home', 00.00, 1250.00, 2),
         ('Eye Liner', 'Personal Care', 00.00, 5.97, 20);
 
-SELECT * FROM products;
+INSERT INTO departments (department_name, over_head_costs)
+VALUES  ('Home', 1000),
+        ('Personal Care', 500),
+        ('Electronics', 7000),
+        ('Office', 3000),
+        ('Kitchen', 6000),
+        ('Grocery', 2000)

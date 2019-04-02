@@ -70,12 +70,12 @@ function returnToMenu() {
 function viewAllProducts() {
     connection.query(`
         SELECT
-        item_id AS ID,
-        product_name AS Product,
-        department_name AS Department,
-        CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
-        CONCAT('$', FORMAT(price, 2)) AS Price,
-        stock_quantity AS 'Quantity in stock'
+            item_id AS ID,
+            product_name AS Product,
+            department_name AS Department,
+            CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
+            CONCAT('$', FORMAT(price, 2)) AS Price,
+            stock_quantity AS 'Quantity in stock'
         FROM products`, 
         (err, res) => {
             errorHandler(err)
@@ -87,12 +87,12 @@ function viewLowInventory() {
     const lowQty = 5
     connection.query(`
         SELECT
-        item_id AS ID,
-        product_name AS Product,
-        department_name AS Department,
-        CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
-        CONCAT('$', FORMAT(price, 2)) AS Price,
-        stock_quantity AS 'Quantity in stock' 
+            item_id AS ID,
+            product_name AS Product,
+            department_name AS Department,
+            CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
+            CONCAT('$', FORMAT(price, 2)) AS Price,
+            stock_quantity AS 'Quantity in stock' 
         FROM products 
         WHERE stock_quantity<?`, 
         [lowQty], 
@@ -105,12 +105,12 @@ function viewLowInventory() {
 function addInventoryDisplay() {
     connection.query(`
         SELECT
-        item_id AS ID,
-        product_name AS Product,
-        department_name AS Department,
-        CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
-        CONCAT('$', FORMAT(price, 2)) AS Price,
-        stock_quantity AS 'Quantity in stock' 
+            item_id AS ID,
+            product_name AS Product,
+            department_name AS Department,
+            CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
+            CONCAT('$', FORMAT(price, 2)) AS Price,
+            stock_quantity AS 'Quantity in stock' 
         FROM products`, 
     (err, res) => {
         errorHandler(err)
@@ -141,7 +141,7 @@ function addInventoryPrompt(currentQty) {
 function retrieveCurrInventory(id, qty) {
     connection.query(`
         SELECT
-        stock_quantity
+            stock_quantity
         FROM products
         WHERE item_id=?`,
         [id],
@@ -209,7 +209,8 @@ function addNewProductPrompt() {
 }
 function addNewProduct(product, department, price, qty) {
     connection.query(`
-        INSERT INTO products SET ?`,
+        INSERT INTO products 
+        SET ?`,
         {
             product_name: product,
             department_name: department,
