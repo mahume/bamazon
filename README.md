@@ -2,10 +2,13 @@
 CLI application that acts as an online storefront for purchasing products. 
 
 ## Getting Started
+Choose how you would like to use the app.
 [Customer](#customer)
+[Manager](#manager)
+[Supervisor](#supervisor)
 
-
-1. Begin by typing the following code into the command line:
+### <a name="customer"></a> Customer
+1. Type the following code into the command line:
 ```
 node bamazonCustomer.js
 ```
@@ -32,6 +35,20 @@ node bamazonCustomer.js
 
 ![](gifs/stop-shop.gif)
 
+### <a name="manager"></a> Manager
+1. Type the following code into the command line:
+```
+node bamazonManager.js
+```
+
+
+
+### <a name="supervisor"></a> Supervisor
+1. Type the following code into the command line:
+```
+node bamazonSupervisor.js
+```
+
 
 ## Built With
 * Node.js
@@ -44,5 +61,3 @@ node bamazonCustomer.js
 
 ## Author
 Mike Hume
-
-### <a name="customer"></a> Customer
