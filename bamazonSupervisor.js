@@ -39,10 +39,11 @@ function viewSalesByDepartment() {
         departments.department_id AS ID,    
         departments.department_name AS Department,
         departments.over_head_costs AS 'Overhead Costs',
-        products.product_sales AS Sales
+        SUM(products.product_sales) AS Sales
     FROM departments
     LEFT JOIN products
-    ON departments.department_name = products.department_name`,
+    ON departments.department_name = products.department_name
+    GROUP BY departments.department_id`,
     [],
     (err, res) => {
         errorHandler(err)

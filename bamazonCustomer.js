@@ -20,7 +20,7 @@ function viewAllProducts() {
             item_id AS ID,
             product_name AS Product,
             department_name AS Department,
-            CONCAT('$', FORMAT(product_sales, 2)) AS Sales,
+            CONCAT('$', FORMAT(product_sales, 2)) AS 'Total Sales',
             CONCAT('$', FORMAT(price, 2)) AS Price,
             stock_quantity AS 'Quantity in stock'
         FROM products`, 
