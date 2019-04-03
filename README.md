@@ -2,7 +2,7 @@
 CLI application that acts as an online storefront for purchasing products. 
 
 ## Getting Started
-[Customer](###Bamazon-Customer)
+[Customer](###Customer)
 
 
 1. Begin by typing the following code into the command line:
@@ -45,4 +45,4 @@ node bamazonCustomer.js
 ## Author
 Mike Hume
 
-(###Bamazon-Customer)
+### Customer
