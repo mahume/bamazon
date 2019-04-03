@@ -3,9 +3,9 @@ CLI application that acts as an online storefront for purchasing products.
 
 ## Getting Started
 Choose how you would like to use the app.
-[Customer](#customer)<br/>
-[Manager](#manager)<br/>
-[Supervisor](#supervisor)<br/>
+-   [Customer](#customer)
+-   [Manager](#manager)
+-   [Supervisor](#supervisor)
 
 ### <a name="customer"></a> Customer
 1. Type the following code into the command line:
