@@ -1,7 +1,10 @@
 # Bamazon
-Node.js based CLI application that uses MySQL database to keep track of a store's inventory.
+CLI application that acts as an online storefront for purchasing products. 
 
 ## Getting Started
+[Customer](###Bamazon-Customer)
+
+
 1. Begin by typing the following code into the command line:
 ```
 node bamazonCustomer.js
@@ -41,3 +44,5 @@ node bamazonCustomer.js
 
 ## Author
 Mike Hume
+
+(###Bamazon-Customer)

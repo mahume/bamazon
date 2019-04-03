@@ -27,6 +27,7 @@ function promptQuestions() {
         case 'Exit':
           console.log('Goodbye');
           process.exit();
+          break;
         default:
           break;
       }
