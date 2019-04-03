@@ -23,11 +23,29 @@ function viewAllProducts() {
     (err, res) => {
       errorHandler(err);
       console.table(res);
-      promptQuestions();
+      promptPurchaseOrExit();
     }
   );
 }
-function promptQuestions() {
+function promptPurchaseOrExit() {
+  inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'options',
+        message: `What would you like to do?`,
+        choices: ['Purchase a product', 'Exit'],
+      },
+    ])
+    .then(answers => {
+      if (answers.options === 'Purchase a product') {
+        promptPurchaseQuestions();
+      } else {
+        process.exit();
+      }
+    });
+}
+function promptPurchaseQuestions() {
   inquirer
     .prompt([
       {
@@ -51,7 +69,7 @@ function continueShopping() {
       {
         type: 'confirm',
         name: 'continueShop',
-        message: 'Would you like to continue shopping?',
+        message: 'Would you like to return to the main menu?',
       },
     ])
     .then(answers => {

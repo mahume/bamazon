@@ -18,7 +18,7 @@ function promptQuestions() {
           viewSalesByDepartment();
           break;
         case 'Create new department':
-          createDepartment();
+          createDepartmentPrompt();
           break;
         default:
           break;
@@ -42,16 +42,65 @@ function viewSalesByDepartment() {
     (err, res) => {
       errorHandler(err);
       console.table(res);
+      returnToMenu();
     }
   );
 }
-function createDepartment() {}
 function errorHandler(err) {
   if (err) {
     console.log('An error occurred while executing the query');
     throw err;
   }
 }
-
-// product_sales AS Sales,
-// total_profit AS Profit
+function returnToMenu() {
+  inquirer
+    .prompt([
+      {
+        type: 'confirm',
+        name: 'returnToMenu',
+        message: 'Would you like to return to the main menu?',
+      },
+    ])
+    .then(answers => {
+      if (answers.returnToMenu === true) {
+        promptQuestions();
+      } else {
+        console.log(`Logging out`);
+        connection.end();
+      }
+    });
+}
+function createDepartmentPrompt() {
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'department_name',
+        message: `Please enter a department name.`,
+      },
+      {
+        type: 'input',
+        name: 'over_head_costs',
+        message: `Please enter the department's total overhead costs.`,
+      },
+    ])
+    .then(answers => {
+      const departmentName = answers.department_name;
+      const overheadCosts = answers.over_head_costs;
+      addNewDepartment(departmentName, overheadCosts);
+    });
+}
+function addNewDepartment(departmentName, overheadCosts) {
+  connection.query(
+    `
+        INSERT INTO departments 
+        SET ?`,
+    {
+      department_name: departmentName,
+      over_head_costs: overheadCosts,
+    },
+    (err, res) => {
+      viewSalesByDepartment();
+    }
+  );
+}
