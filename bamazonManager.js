@@ -1,6 +1,5 @@
-const inquirer = require('inquirer')
-const connection = require('./connection')
-
+const inquirer = require('inquirer');
+const connection = require('./connection');
 
 connection.connect(err => {
   if (err) {
@@ -23,6 +22,7 @@ function promptQuestions() {
           'View low inventory',
           'Add to inventory',
           'Add new product',
+          'Exit',
         ],
       },
     ])
@@ -39,6 +39,10 @@ function promptQuestions() {
           break;
         case 'Add new product':
           addNewProductPrompt();
+          break;
+        case 'Exit':
+          console.log('Goodbye');
+          process.exit();
           break;
         default:
           break;
@@ -135,8 +139,8 @@ function addInventoryPrompt(currentQty) {
       },
     ])
     .then(answers => {
-      let id = parseInt(answers.item_id);
-      let addQty = parseInt(answers.stock_quantity);
+      const id = parseInt(answers.item_id);
+      const addQty = parseInt(answers.stock_quantity);
       retrieveCurrInventory(id, addQty);
     });
 }
@@ -149,7 +153,7 @@ function retrieveCurrInventory(id, qty) {
         WHERE item_id=?`,
     [id],
     (err, res) => {
-      let newQty = res[0].stock_quantity + qty;
+      const newQty = res[0].stock_quantity + qty;
       addInventory(id, newQty);
     }
   );
@@ -206,10 +210,10 @@ function addNewProductPrompt() {
       },
     ])
     .then(answers => {
-      let productName = answers.product_name;
-      let departmentName = answers.department_name;
-      let unitPrice = answers.unit_price;
-      let stockQty = answers.stock_quantity;
+      const productName = answers.product_name;
+      const departmentName = answers.department_name;
+      const unitPrice = answers.unit_price;
+      const stockQty = answers.stock_quantity;
       addNewProduct(productName, departmentName, unitPrice, stockQty);
     });
 }

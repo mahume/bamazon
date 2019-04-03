@@ -9,7 +9,11 @@ function promptQuestions() {
         type: 'list',
         name: 'options',
         message: 'Select a command',
-        choices: ['View products sales by department', 'Create new department'],
+        choices: [
+          'View products sales by department',
+          'Create new department',
+          'Exit',
+        ],
       },
     ])
     .then(answers => {
@@ -20,6 +24,9 @@ function promptQuestions() {
         case 'Create new department':
           createDepartmentPrompt();
           break;
+        case 'Exit':
+          console.log('Goodbye');
+          process.exit();
         default:
           break;
       }
