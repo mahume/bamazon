@@ -2,7 +2,7 @@
 CLI application that acts as an online storefront for purchasing products. 
 
 ## Getting Started
-Through which of the following roles you would like to use the app:
+Choose how you would like to use the app:
 -   [Customer](#customer):
     -   Purchase items
 -   [Manager](#manager):
@@ -15,13 +15,14 @@ Type the following code into the command line:
 ```
 node bamazonCustomer.js
 ```
-*A table of all current products is displayed. With the option to 'Purchase a product' or 'Exit'.*
+*A table of all current products is displayed with the option to 'Purchase a product' or 'Exit'.*
 ![](gifs/customer.gif)
 
 
 #### Purchase a product
 1.  Enter the ID# of the product which you would like to purchase.
 2.  Select the quantity.
+
 *A receipt of purchase will be displayed and the grand total will be added to the 'Total Sales' column.*
 ![](gifs/purchase.gif)
 
