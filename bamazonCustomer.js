@@ -41,6 +41,7 @@ function promptPurchaseOrExit() {
       if (answers.options === 'Purchase a product') {
         promptPurchaseQuestions();
       } else {
+        console.log('Goodbye!');
         process.exit();
       }
     });
