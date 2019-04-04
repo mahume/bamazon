@@ -1,4 +1,6 @@
 # Bamazon
+
+## About
 CLI application that acts as an online storefront for purchasing products. 
 
 ## Getting Started
@@ -16,7 +18,7 @@ Type the following code into the command line:
 ```
 node bamazonCustomer.js
 ```
-*A table of all current products is displayed with the option to 'Purchase a product' or 'Exit'.*
+*A list of actionable options will be provided.*
 ![](gifs/customer.gif)
 
 
@@ -81,6 +83,7 @@ node bamazonSupervisor.js
 ![](gifs/supervisor.gif)
 
 #### View products for sale by department.
+
 ![](gifs/supervisor-view-products.gif)
 
 #### Add new product

@@ -7,7 +7,7 @@ connection.connect(err => {
     throw err;
   }
   console.error(`Connected as: ${connection.threadId}`);
-  viewAllProducts();
+  promptPurchaseOrExit();
 });
 function viewAllProducts() {
   connection.query(
@@ -23,7 +23,7 @@ function viewAllProducts() {
     (err, res) => {
       errorHandler(err);
       console.table(res);
-      promptPurchaseOrExit();
+      promptPurchaseQuestions();
     }
   );
 }
@@ -39,7 +39,7 @@ function promptPurchaseOrExit() {
     ])
     .then(answers => {
       if (answers.options === 'Purchase a product') {
-        promptPurchaseQuestions();
+        viewAllProducts();
       } else {
         console.log('Goodbye!');
         process.exit();
@@ -75,7 +75,7 @@ function continueShopping() {
     ])
     .then(answers => {
       if (answers.continueShop === true) {
-        viewAllProducts();
+        promptPurchaseOrExit();
       } else {
         console.log(`Thank's for shopping at Bamazon. Come back soon.`);
         connection.end();
