@@ -57,26 +57,42 @@ node bamazonManager.js
 #### Add to inventory
 1.  Enter the ID# of the product to which you would like to add stock.
 2.  Enter the quantity.
+
 ![](gifs/manager-add-inventory.gif)
 
 #### Add new product
+1.  Enter the product name.
+2.  Enter the department name.
+3.  Enter the product's price per unit.
+4.  Enter the quantity of stock to add.
+
 ![](gifs/manager-add-product.gif)
 
 #### Exit
 -   A goodbye message will be shown and the app will exit.
 
-
-
-
-
-
-
-
+___
 ### <a name="supervisor"></a> Supervisor
-1. Type the following code into the command line:
+Type the following code into the command line:
 ```
 node bamazonSupervisor.js
 ```
+*A list of actionable options will be provided.*
+![](gifs/supervisor.gif)
+
+#### View products for sale by department.
+![](gifs/supervisor-view-products.gif)
+
+#### Add new product
+1.  Enter the product name.
+2.  Enter the department name.
+3.  Enter the product's price per unit.
+4.  Enter the quantity of stock to add.
+
+![](gifs/manager-add-product.gif)
+
+#### Exit
+-   A goodbye message will be shown and the app will exit.
 
 
 ## Built With
