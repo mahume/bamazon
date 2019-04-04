@@ -54,14 +54,14 @@ A list of commands will be provided.
 ![](assets/images/manager-low-inventory.png)
 
 #### Add to inventory
-![](assets/gifs/manager-add-inventory.gif)
+![](assets/images/manager-add-inventory.png)
 
 1.  Enter the ID# of the product to which you would like to add stock.
 2.  Enter the quantity.
 
 
 #### Add new product
-![](assets/gifs/manager-add-product.gif)
+![](assets/images/manager-add-new-product.png)
 
 1.  Enter the product name.
 2.  Enter the department name.
