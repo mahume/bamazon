@@ -8,7 +8,7 @@ Choose how you would like to use the app:
 -   [Customer](#customer):
     -   Purchase items
 -   [Manager](#manager):
-    -   Maintain inventory / Add products
+    -   Maintain inventory / Add new products
 -   [Supervisor](#supervisor):
     -   Maintain departments / View profits
 
@@ -84,11 +84,11 @@ A list of commands will be provided.
 
 
 #### Create new department
+*The 'Sales' & 'Total Profit' columns will remain 'null' until products are added.*
 ![](assets/images/supervisor-create-dept.png)
 
 1.  Enter the department name.
 2.  Enter the overhead costs.
-3.  The 'Sales' & 'Total Profit' columns will remain 'null' until products are added.
 
 ___
 ## Built With
