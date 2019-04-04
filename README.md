@@ -19,6 +19,7 @@ Type the following code into the command line:
 node bamazonCustomer.js
 ```
 A list of actionable options will be provided.
+
 ![](assets/images/customer-options.png)
 
 
