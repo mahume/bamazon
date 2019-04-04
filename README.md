@@ -82,17 +82,15 @@ A list of actionable options will be provided.
 
 ![](assets/images/supervisor-options.png)
 
-#### View products for sale by department.
+#### View total sales by department.
 
-![](assets/gifs/supervisor-view-products.gif)
+![](assets/images/supervisor-view-sales.png)
 
-#### Add new product
-1.  Enter the product name.
-2.  Enter the department name.
-3.  Enter the product's price per unit.
-4.  Enter the quantity of stock to add.
+#### Create new department
+1.  Enter the department name.
+2.  Enter the overhead costs.
 
-![](assets/gifs/manager-add-product.gif)
+![](assets/images/supervisor-create-dept.png)
 
 #### Exit
 -   A goodbye message will be shown and the app will exit.
