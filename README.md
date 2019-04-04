@@ -23,12 +23,10 @@ node bamazonCustomer.js
 
 
 #### Purchase a product
-1.  Enter the ID# of the product which you would like to purchase.
-2.  Enter the quantity.
-
-
 ![](assets/gifs/customer-purchase.gif)
 
+1.  Enter the ID# of the product which you would like to purchase.
+2.  Enter the quantity.
 3.  A receipt of purchase will be displayed and the grand total will be added to the 'Total Sales' column. 
 4.  Errors:
 -   If there is insufficient stock, you will be notified and prompted again.
