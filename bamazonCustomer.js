@@ -95,12 +95,12 @@ function checkQty(id, qty) {
 
       if (Number.isNaN(parseInt(id)) || Number.isNaN(parseInt(qty))) {
         console.log('Please enter a valid numerical number.');
-        promptQuestions();
+        promptPurchaseQuestions();
       } else if (res[0].stock_quantity < qty) {
         console.log(
           `Uh-oh... Looks like we don't have enough stock to complete your order.`
         );
-        promptQuestions();
+        promptPurchaseQuestions();
       } else {
         const qtyRemaining = res[0].stock_quantity - qty;
         console.log(`You're in luck! We've got sufficient stock.`);

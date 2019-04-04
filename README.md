@@ -2,28 +2,32 @@
 CLI application that acts as an online storefront for purchasing products. 
 
 ## Getting Started
-Choose how you would like to use the app.
--   [Customer](#customer)
--   [Manager](#manager)
--   [Supervisor](#supervisor)
+Through which of the following roles you would like to use the app:
+-   [Customer](#customer): Purchase items
+-   [Manager](#manager): Maintain inventory / Add products
+-   [Supervisor](#supervisor): Maintain departments / View profits
 
 ### <a name="customer"></a> Customer
 1. Type the following code into the command line:
 ```
 node bamazonCustomer.js
 ```
-*A table of all current products is displayed.*
-![](gifs/bamazon-customer.gif)
+*A table of all current products is displayed. With the option to 'Purchase a product' or 'Exit'.*
+![](gifs/customer.gif)
 
 
-2. Enter the ID# (item_id) of the product (product_name) that you'd like to purchase then press enter.
-3. Enter the quantity that you'd like to purchase from the available stock (stock_quantity) and then press enter.
+2. Purchase a product
+-   Enter the item's ID# which you would like to purchase.
+-   Select the quantity
+*A receipt of purchase will be displayed and the grand total will be added to the 'Total Sales' column.*
+![](gifs/purchase)
+
+*If there is insufficient quantity in stock.*
+![](gifs/insufficient-qty.gif)
 
 *If either entry is not a numerical value the app will notify you.*
-![](gifs/string-input.gif)
+![](gifs/invalid-num.gif)
 
-*If ID# is not a found in the table the app will notify you.*
-![](gifs/id-not-in-table.gif)
 
 
 4. If not errors are found and there is sufficient stock, you will receive a receipt. 
