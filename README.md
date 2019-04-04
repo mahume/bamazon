@@ -27,8 +27,10 @@ node bamazonCustomer.js
 ![](gifs/purchase.gif)
 
 3. Errors:
+
 *If there is insufficient stock, you will be notified and prompted again.*
 ![](gifs/insufficient-qty.gif)
+
 *If the value is not numerical, you will be prompted to re-enter your data.*
 ![](gifs/invalid-num.gif)
 
