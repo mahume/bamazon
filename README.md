@@ -19,7 +19,7 @@ Type the following code into the command line:
 node bamazonCustomer.js
 ```
 *A list of actionable options will be provided.*
-![](gifs/customer.gif)
+![](assets/gifs/customer.gif)
 
 
 #### Purchase a product
@@ -27,18 +27,18 @@ node bamazonCustomer.js
 2.  Select the quantity.
 
 *A receipt of purchase will be displayed and the grand total will be added to the 'Total Sales' column.*
-![](gifs/purchase.gif)
+![](assets/gifs/customer-purchase.gif)
 
 3. Errors:
 
 *If there is insufficient stock, you will be notified and prompted again.*
-![](gifs/insufficient-qty.gif)
+![](assets/gifs/insufficient-qty.gif)
 
 *If the value is not numerical, you will be prompted to re-enter your data.*
-![](gifs/invalid-num.gif)
+![](assets/gifs/invalid-num.gif)
 
 #### Exit
--   A goodbye message will be shown and the app will exit.
+![](assets/images/customer-exit.png)
 
 ___
 ### <a name="manager"></a> Manager
@@ -47,20 +47,20 @@ Type the following code into the command line:
 node bamazonManager.js
 ```
 *A list of actionable options will be provided.*
-![](gifs/manager.gif)
+![](assets/gifs/manager.gif)
 
 #### View products for sale
-![](gifs/manager-view-products.gif)
+![](assets/gifs/manager-view-products.gif)
 
 #### View low inventory
 *Products with a stock quantity below 5 will be shown.*
-![](gifs/manager-low-inventory.gif)
+![](assets/gifs/manager-low-inventory.gif)
 
 #### Add to inventory
 1.  Enter the ID# of the product to which you would like to add stock.
 2.  Enter the quantity.
 
-![](gifs/manager-add-inventory.gif)
+![](assets/gifs/manager-add-inventory.gif)
 
 #### Add new product
 1.  Enter the product name.
@@ -68,7 +68,7 @@ node bamazonManager.js
 3.  Enter the product's price per unit.
 4.  Enter the quantity of stock to add.
 
-![](gifs/manager-add-product.gif)
+![](assets/gifs/manager-add-product.gif)
 
 #### Exit
 -   A goodbye message will be shown and the app will exit.
@@ -80,11 +80,11 @@ Type the following code into the command line:
 node bamazonSupervisor.js
 ```
 *A list of actionable options will be provided.*
-![](gifs/supervisor.gif)
+![](assets/gifs/supervisor.gif)
 
 #### View products for sale by department.
 
-![](gifs/supervisor-view-products.gif)
+![](assets/gifs/supervisor-view-products.gif)
 
 #### Add new product
 1.  Enter the product name.
@@ -92,7 +92,7 @@ node bamazonSupervisor.js
 3.  Enter the product's price per unit.
 4.  Enter the quantity of stock to add.
 
-![](gifs/manager-add-product.gif)
+![](assets/gifs/manager-add-product.gif)
 
 #### Exit
 -   A goodbye message will be shown and the app will exit.
