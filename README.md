@@ -10,6 +10,7 @@ Choose how you would like to use the app:
 -   [Supervisor](#supervisor):
     -   Maintain departments / View profits
 
+___
 ### <a name="customer"></a> Customer
 Type the following code into the command line:
 ```
@@ -37,6 +38,7 @@ node bamazonCustomer.js
 #### Exit
 -   A goodbye message will be shown and the app will exit.
 
+___
 ### <a name="manager"></a> Manager
 Type the following code into the command line:
 ```
@@ -49,13 +51,16 @@ node bamazonManager.js
 ![](gifs/manager-view-products.gif)
 
 #### View low inventory
+*Products with a stock quantity below 5 will be shown.*
 ![](gifs/manager-low-inventory.gif)
 
 #### Add to inventory
+1.  Enter the ID# of the product to which you would like to add stock.
+2.  Enter the quantity.
 ![](gifs/manager-add-inventory.gif)
 
 #### Add new product
-![](manager-add-product.gif)
+![](gifs/manager-add-product.gif)
 
 #### Exit
 -   A goodbye message will be shown and the app will exit.
