@@ -79,14 +79,16 @@ A list of commands will be provided.
 ![](assets/images/supervisor-options.png)
 
 #### View total sales by department.
+*Profit is calculated by the difference between overhead costs and total sales.*
+![](assets/images/supervisor-view-total-sales.png)
 
-![](assets/images/supervisor-view-sales.png)
 
 #### Create new department
 ![](assets/images/supervisor-create-dept.png)
 
 1.  Enter the department name.
 2.  Enter the overhead costs.
+3.  The 'Sales' & 'Total Profit' columns will remain 'null' until products are added.
 
 ___
 ## Built With
