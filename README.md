@@ -19,17 +19,18 @@ Type the following code into the command line:
 node bamazonCustomer.js
 ```
 *A list of actionable options will be provided.*
-![](assets/gifs/customer.gif)
+![](assets/images/customer-options.png)
 
 
 #### Purchase a product
 1.  Enter the ID# of the product which you would like to purchase.
-2.  Select the quantity.
+2.  Enter the quantity.
 
-*A receipt of purchase will be displayed and the grand total will be added to the 'Total Sales' column.*
+
 ![](assets/gifs/customer-purchase.gif)
 
-3. Errors:
+3.  A receipt of purchase will be displayed and the grand total will be added to the 'Total Sales' column. 
+4.  Errors:
 
 *If there is insufficient stock, you will be notified and prompted again.*
 ![](assets/gifs/insufficient-qty.gif)
