@@ -33,10 +33,10 @@ node bamazonCustomer.js
 4.  Errors:
 
 *If there is insufficient stock, you will be notified and prompted again.*
-![](assets/gifs/insufficient-qty.gif)
+![](assets/images/customer-insufficient-stock.png)
 
 *If the value is not numerical, you will be prompted to re-enter your data.*
-![](assets/gifs/invalid-num.gif)
+![](assets/images/customer-invalid-num.png)
 
 #### Exit
 ![](assets/images/customer-exit.png)
