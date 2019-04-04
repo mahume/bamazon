@@ -31,11 +31,9 @@ node bamazonCustomer.js
 
 3.  A receipt of purchase will be displayed and the grand total will be added to the 'Total Sales' column. 
 4.  Errors:
-
-*If there is insufficient stock, you will be notified and prompted again.*
+-   If there is insufficient stock, you will be notified and prompted again.
 ![](assets/images/customer-insufficient-stock.png)
-
-*If the value is not numerical, you will be prompted to re-enter your data.*
+-   If the value is not numerical, you will be prompted to re-enter your data.
 ![](assets/images/customer-invalid-num.png)
 
 #### Exit
