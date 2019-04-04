@@ -24,7 +24,7 @@ A list of commands will be provided.
 
 
 #### Purchase a product
-![](assets/gifs/customer-purchase.gif)
+![](assets/images/customer-purchase.png)
 
 1.  Enter the ID# of the product which you would like to purchase.
 2.  Enter the quantity.
