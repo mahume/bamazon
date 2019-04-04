@@ -41,7 +41,7 @@ function promptPurchaseOrExit() {
       if (answers.options === 'Purchase a product') {
         viewAllProducts();
       } else {
-        console.log('Goodbye!');
+        console.log('Thank you for shopping with us!');
         process.exit();
       }
     });
