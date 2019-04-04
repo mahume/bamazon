@@ -3,9 +3,12 @@ CLI application that acts as an online storefront for purchasing products.
 
 ## Getting Started
 Through which of the following roles you would like to use the app:
--   [Customer](#customer):      Purchase items
--   [Manager](#manager):        Maintain inventory / Add products
--   [Supervisor](#supervisor):  Maintain departments / View profits
+-   [Customer](#customer):
+    -   Purchase items
+-   [Manager](#manager):
+    -   Maintain inventory / Add products
+-   [Supervisor](#supervisor):
+    -   Maintain departments / View profits
 
 ### <a name="customer"></a> Customer
 1. Type the following code into the command line:
