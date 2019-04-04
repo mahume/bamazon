@@ -11,7 +11,7 @@ Through which of the following roles you would like to use the app:
     -   Maintain departments / View profits
 
 ### <a name="customer"></a> Customer
-1. Type the following code into the command line:
+Type the following code into the command line:
 ```
 node bamazonCustomer.js
 ```
@@ -19,21 +19,20 @@ node bamazonCustomer.js
 ![](gifs/customer.gif)
 
 
-2. Purchase a product
--   Enter the item's ID# which you would like to purchase.
--   Select the quantity
-
+#### Purchase a product
+1.  Enter the ID# of the product which you would like to purchase.
+2.  Select the quantity.
 *A receipt of purchase will be displayed and the grand total will be added to the 'Total Sales' column.*
 ![](gifs/purchase.gif)
 
-*Error: Insufficient quantity in stock.*
+3. Errors:
+*If there is insufficient stock, you will be notified and prompted again.*
 ![](gifs/insufficient-qty.gif)
-
-*Error: Not a numerical value.*
+*If the value is not numerical, you will be prompted to re-enter your data.*
 ![](gifs/invalid-num.gif)
 
-3. Exit
-
+#### Exit
+-   A goodbye message will be shown and the app will exit.
 
 ### <a name="manager"></a> Manager
 1. Type the following code into the command line:
