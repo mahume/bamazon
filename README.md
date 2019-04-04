@@ -38,10 +38,32 @@ node bamazonCustomer.js
 -   A goodbye message will be shown and the app will exit.
 
 ### <a name="manager"></a> Manager
-1. Type the following code into the command line:
+Type the following code into the command line:
 ```
 node bamazonManager.js
 ```
+*A list of actionable options will be provided.*
+![](gifs/manager.gif)
+
+#### View products for sale
+![](gifs/manager-view-products.gif)
+
+#### View low inventory
+![](gifs/manager-low-inventory.gif)
+
+#### Add to inventory
+![](gifs/manager-add-inventory.gif)
+
+#### Add new product
+![](manager-add-product.gif)
+
+#### Exit
+-   A goodbye message will be shown and the app will exit.
+
+
+
+
+
 
 
 
