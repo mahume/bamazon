@@ -49,11 +49,11 @@ A list of actionable options will be provided.
 ![](assets/images/manager-options.png)
 
 #### View products for sale
-![](assets/gifs/manager-view-products.gif)
+![](assets/images/manager-view-products.png)
 
 #### View low inventory
 *Products with a stock quantity below 5 will be shown.*
-![](assets/gifs/manager-low-inventory.gif)
+![](assets/images/manager-low-inventory.png)
 
 #### Add to inventory
 1.  Enter the ID# of the product to which you would like to add stock.
