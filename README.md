@@ -19,25 +19,18 @@ node bamazonCustomer.js
 2. Purchase a product
 -   Enter the item's ID# which you would like to purchase.
 -   Select the quantity
+
 *A receipt of purchase will be displayed and the grand total will be added to the 'Total Sales' column.*
 ![](gifs/purchase.gif)
 
-*If there is insufficient quantity in stock.*
+*Error: Insufficient quantity in stock.*
 ![](gifs/insufficient-qty.gif)
 
-*If either entry is not a numerical value the app will notify you.*
+*Error: Not a numerical value.*
 ![](gifs/invalid-num.gif)
 
+3. Exit
 
-
-4. If not errors are found and there is sufficient stock, you will receive a receipt. 
-
-![](gifs/success.gif)
-
-
-5. You are then able to exit the app
-
-![](gifs/stop-shop.gif)
 
 ### <a name="manager"></a> Manager
 1. Type the following code into the command line:
