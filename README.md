@@ -44,8 +44,9 @@ Type the following code into the command line:
 ```
 node bamazonManager.js
 ```
-*A list of actionable options will be provided.*
-![](assets/gifs/manager.gif)
+A list of actionable options will be provided.
+
+![](assets/images/manager-options.png)
 
 #### View products for sale
 ![](assets/gifs/manager-view-products.gif)
@@ -77,8 +78,9 @@ Type the following code into the command line:
 ```
 node bamazonSupervisor.js
 ```
-*A list of actionable options will be provided.*
-![](assets/gifs/supervisor.gif)
+A list of actionable options will be provided.
+
+![](assets/images/supervisor-options.png)
 
 #### View products for sale by department.
 
