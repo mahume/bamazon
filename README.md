@@ -97,7 +97,6 @@ ___
 * npm
     * [inquirer](https://www.npmjs.com/package/inquirer)
     * [mysql](https://www.npmjs.com/package/mysql)
-    * [chalk](https://www.npmjs.com/package/chalk)
     * [dotenv](https://www.npmjs.com/package/dotenv)
 
 ## Author
