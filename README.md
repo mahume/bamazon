@@ -1,9 +1,11 @@
 # Bamazon
 
 ## About
+
 CLI application that acts as an online storefront for purchasing products. 
 
 ## Getting Started
+
 Choose how you would like to use the app:
 -   [Customer](#customer):
     -   Purchase items
@@ -14,6 +16,7 @@ Choose how you would like to use the app:
 
 ___
 ### <a name="customer"></a> Customer
+
 Type the following code into the command line:
 ```
 node bamazonCustomer.js
@@ -24,6 +27,7 @@ A list of commands will be provided.
 
 
 #### Purchase a product
+
 ![](assets/images/customer-purchase.png)
 
 1.  Enter the ID# of the product which you would like to purchase.
@@ -38,6 +42,7 @@ A list of commands will be provided.
 
 ___
 ### <a name="manager"></a> Manager
+
 Type the following code into the command line:
 ```
 node bamazonManager.js
@@ -47,13 +52,16 @@ A list of commands will be provided.
 ![](assets/images/manager-options.png)
 
 #### View products for sale
+
 ![](assets/images/manager-view-products.png)
 
 #### View low inventory
+
 *Products with a stock quantity below 5 will be shown.*
 ![](assets/images/manager-low-inventory.png)
 
 #### Add to inventory
+
 ![](assets/images/manager-add-inventory.png)
 
 1.  Enter the ID# of the product to which you would like to add stock.
@@ -61,6 +69,7 @@ A list of commands will be provided.
 
 
 #### Add new product
+
 ![](assets/images/manager-add-new-product.png)
 
 1.  Enter the product name.
@@ -70,6 +79,7 @@ A list of commands will be provided.
 
 ___
 ### <a name="supervisor"></a> Supervisor
+
 Type the following code into the command line:
 ```
 node bamazonSupervisor.js
@@ -79,11 +89,13 @@ A list of commands will be provided.
 ![](assets/images/supervisor-options.png)
 
 #### View total sales by department.
+
 *Profit is calculated by the difference between overhead costs and total sales.*
 ![](assets/images/supervisor-view-total-sales.png)
 
 
 #### Create new department
+
 *The 'Sales' & 'Total Profit' columns will remain 'null' until products are added.*
 ![](assets/images/supervisor-create-dept.png)
 
@@ -91,7 +103,8 @@ A list of commands will be provided.
 2.  Enter the overhead costs.
 
 ___
-## Built With
+## Technologies
+
 * Node.js
 * MySQL
 * npm
@@ -100,4 +113,5 @@ ___
     * [dotenv](https://www.npmjs.com/package/dotenv)
 
 ## Author
-Mike Hume
+
+[Mike Hume](https://mahume.github.io/)
